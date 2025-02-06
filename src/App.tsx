@@ -142,11 +142,11 @@ function App() {
     try {
       const proxyAddress = "0xe5ED05defa0631B561751AB96e63f3cbA5Aae449";
       //   const result = await controllerContract.withdrawAsset(
-      //     proxyAddress, // Proxy address
-      //     tokenAddress, // Token
-      //     ethers.parseUnits(amount, 18), // Amount in wei
-      //     recipientAddress, // Recipient
-      //     expiresAt,
+      //     proxyAddress, // Proxy address 0xe5ED05defa0631B561751AB96e63f3cbA5Aae449
+      //     tokenAddress, // token 0xe5ED05defa0631B561751AB96e63f3cbA5Aae449
+      //     ethers.parseUnits(amount, 18), // Amount in wei 1000000
+      //     recipientAddress, // Recipient 0x53a3D640A406D5a8306aE6470a0e221FEAB10828
+      //     expiresAt, 1738845487
       //     Uint8Array.from(
       //         atob(signature.data),
       //         (c) => c.charCodeAt(0)
@@ -156,12 +156,12 @@ function App() {
 
       const result = await controllerContract.withdrawAsset(
         parameters[0], // Proxy address
-        parameters[1], // Proxy address
+        parameters[1], // token address
         parameters[2], // Amount in wei
         parameters[3], // Recipient
-        parameters[4], // Recipient
-        Uint8Array.from(atob(signature.salt), (c) => c.charCodeAt(0)),
-        parameters[6], // Recipient
+        parameters[4], // expiresAt
+        Uint8Array.from(atob(signature.salt), (c) => c.charCodeAt(0)), /// raw salt
+        parameters[6], // signature
       );
 
       console.log("Withdraw Transaction Sent:", result);
