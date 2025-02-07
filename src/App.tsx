@@ -67,13 +67,13 @@ function App() {
       const formattedSalt = Uint8Array.from(atob(salt), (c) => c.charCodeAt(0));
 
       const result = await controllerContract.withdrawAsset(
-        proxyAddress,
-        tokenAddress,
-        amount,
-        recipient,
-        expiresAt,
-        formattedSalt,
-        signature
+        proxyAddress, //parameters[0]
+        tokenAddress, //parameters[1]
+        amount,     //parameters[2]
+        recipient,  //parameters[3]
+        expiresAt,  //parameters[4]
+        formattedSalt, // salt
+        signature    // parameters[6]
       );
 
       console.log("Withdraw Transaction Sent:", result);
@@ -161,7 +161,7 @@ function App() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Salt (Base64) **<span className="text-lg font-medium text-green-600">Salt</span>**</label>
+                <label className="block text-sm font-medium text-gray-700">Salt (Base64) **<span className="text-lg font-medium text-green-600">salt</span>**</label>
                 <input
                   type="text"
                   value={salt}
